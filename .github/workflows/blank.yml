@@ -25,4 +25,4 @@ jobs:
         id: get-commit-msg
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo {{ steps.get-commit-msg.outputs.COMMIT_MSG }}
+        run: echo ${{ steps.get-commit-msg.outputs.COMMIT_MSG }}
