@@ -23,7 +23,7 @@ jobs:
       - name: Set selected color
         run: |
           echo "::set-output name=COMMIT_MSG::$(git log --format=%B -n 1 ${{ github.event.after }})"
-          echo ${{ github }}
+          echo ${{ toJSON(github) }}
         id: get-commit-msg
       # Runs a single command using the runners shell
       - name: Run a one-line script
