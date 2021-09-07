@@ -20,8 +20,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+      - name: Set selected color
+        run: echo '::set-output name=COMMIT_MSG::$(git log --format=%B -n 1 ${{ github.event.after }})'
+        id: get-commit-msg
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo $(git log --format=%B -n 1 ${{ github.event.after }})
-
+        run: echo {{ steps.get-commit-msg.outputs.COMMIT_MSG }}
